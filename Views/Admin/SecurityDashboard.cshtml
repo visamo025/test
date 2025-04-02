@@ -1,0 +1,169 @@
+﻿
+@{
+    ViewData["Title"] = "SecurityDashboard";
+    Layout = "~/Views/Shared/security.cshtml";
+}
+
+<h1>SecurityDashboard</h1>
+
+<div class="row">
+    <div class="col-sm-6 col-lg-4 col-xl-3">
+        <a href="~/Security/complainview" class="p-4 text-center bg-primary-subtle card shadow-none rounded-2">
+            <img src="../assets/images/svgs/icon-user-male.svg" width="50" height="50" class="mb-6 mx-auto"
+                 alt="">
+            <p class="fw-semibold text-primary mb-1">Complain</p>
+            <h4 class="fw-semibold text-primary mb-0">@ViewData["complain"]</h4>
+        </a>
+    </div>
+    <div class="col-sm-6 col-lg-4 col-xl-3">
+        <a href="~/Security/GatepassDetails" class="p-4 text-center bg-warning-subtle card shadow-none rounded-2">
+            <img src="../assets/images/svgs/icon-briefcase.svg" width="50" height="50" class="mb-6 mx-auto"
+                 alt="">
+            <p class="fw-semibold text-warning mb-1">Gatepass</p>
+            <h4 class="fw-semibold text-warning mb-0">@ViewData["Gatepass"]</h4>
+        </a>
+    </div>
+    <div class="col-sm-6 col-lg-4 col-xl-3">
+        <a href="~/Security/ServiceDetails" class="p-4 text-center bg-info-subtle card shadow-none rounded-2">
+            <img src="../assets/images/svgs/icon-mailbox.svg" width="50" height="50" class="mb-6 mx-auto"
+                 alt="">
+            <p class="fw-semibold text-info mb-1">Service</p>
+            <h4 class="fw-semibold text-info mb-0">@ViewData["service"]</h4>
+        </a>
+    </div>
+    <div class="col-sm-6 col-lg-4 col-xl-3">
+        <a href="~/Security/visitor" class="p-4 text-center bg-danger-subtle card shadow-none rounded-2">
+            <img src="../assets/images/svgs/icon-favorites.svg" width="50" height="50" class="mb-6 mx-auto"
+                 alt="">
+            <p class="fw-semibold text-danger mb-1">Visitor</p>
+            <h4 class="fw-semibold text-danger mb-0">@ViewData["visitor"]</h4>
+        </a>
+    </div>
+
+</div>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-title">📢 Latest Visitor</div>
+        <ul class="latest-list">
+            @foreach (var visitor in ViewData["latestvisitor"] as List<WebApplication3.Models.Visitor>)
+            {
+                <li><a href="#">@visitor.Vname - @visitor.Datetime.ToString("dd MMM yyyy")</a></li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-title">📢 Latest Notices</div>
+        <ul class="latest-list">
+            @foreach (var notice in ViewData["LatestNotices"] as List<WebApplication3.Models.Notice>)
+            {
+                <li><a href="#">@notice.Details - @notice.Ndate.ToString("dd MMM yyyy")</a></li>
+            }
+        </ul>
+    </div>
+</div>
+
+<style>
+    .resident-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        text-align: center;
+        border-radius: 12px;
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        text-decoration: none;
+        height: 150px;
+    }
+
+    .card-icon {
+        font-size: 35px;
+        margin-bottom: 5px;
+    }
+
+    .resident-card h1 {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .resident-card p {
+        font-weight: 600;
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .resident-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Dashboard Notices */
+    .container .card {
+        background-color: var(--bs-body-bg);
+        color: var(--bs-body-color);
+        border: 2px solid var(--bs-primary);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: bold;
+        border-bottom: 2px solid var(--bs-primary);
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .latest-list {
+        list-style: none;
+        padding: 0;
+    }
+
+        .latest-list li {
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 8px;
+            margin-bottom: 4px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+            .latest-list li:hover {
+                background-color: var(--bs-primary);
+                color: white;
+            }
+
+            .latest-list li a {
+                color: inherit;
+                text-decoration: none;
+                font-weight: 500;
+            }
+</style>
+
+<!-- Light/Dark Mode Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let sunButton = document.querySelector(".light-layout");
+        let moonButton = document.querySelector(".dark-layout");
+
+        function toggleMode() {
+            document.body.classList.toggle("light-mode");
+            let isLightMode = document.body.classList.contains("light-mode");
+
+            sunButton.style.display = isLightMode ? "none" : "flex";
+            moonButton.style.display = isLightMode ? "flex" : "none";
+        }
+
+        sunButton.addEventListener("click", toggleMode);
+        moonButton.addEventListener("click", toggleMode);
+    });
+</script>
+
+<!-- Iconify Script -->
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>

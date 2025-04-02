@@ -1,0 +1,136 @@
+﻿@model WebApplication3.Models.Income
+
+@{
+    ViewData["Title"] = "IncomeCreate";
+    Layout = "~/Views/Shared/secretary.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Add Income</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="IncomeCreate" class="needs-validation" novalidate>
+                        <!-- Amount -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Amount" class="form-control" type="number" placeholder="Enter Amount" required />
+                            <label asp-for="Amount">Amount</label>
+                            <span asp-validation-for="Amount" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-floating mb-3">
+                            <textarea asp-for="Description" class="form-control" placeholder="Enter Description" style="height: 100px;" required>                                
+                                </textarea>
+                            <label asp-for="Description">Description</label>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Flat Number -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Flatno" class="form-control" placeholder="Enter Flat Number" required />
+                            <label asp-for="Flatno">Flat Number</label>
+                            <span asp-validation-for="Flatno" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Wing Number -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Wingno" class="form-control" placeholder="Enter Wing Number" required />
+                            <label asp-for="Wingno">Wing Number</label>
+                            <span asp-validation-for="Wingno" class="text-danger small"></span>
+                        </div>
+
+                      @*   <!-- Status -->
+                         <div class="form-floating mb-3">
+                        <input asp-for="Status" class="form-control" placeholder="Enter Status" required />
+                        <label asp-for="Status">Status</label>
+                        <span asp-validation-for="Status" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Date -->
+                        <div class="form-floating mb-3">
+                        <input asp-for="Date" type="date" class="form-control" required />
+                        <label asp-for="Date">Date</label>
+                        <span asp-validation-for="Date" class="text-danger small"></span>
+                        </div> 
+ *@
+                        @*  <!-- User ID -->
+                        <div class="form-floating mb-3">
+                        <select asp-for="Uid" class="form-control" asp-items="ViewBag.Uid"></select>
+                        <label asp-for="Uid">User ID</label>
+                        <span asp-validation-for="Uid" class="text-danger small"></span>
+                        </div> *@
+
+                        <!-- Details -->
+                          <div class="form-floating mb-3">
+                        <input asp-for="Details" class="form-control" placeholder="Enter Details" required />
+                        <label asp-for="Details">Details</label>
+                        <span asp-validation-for="Details" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                            <button type="submit" class="btn btn-primary text-white">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    body {
+        background-color: #111c2d;
+    }
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .form-floating label {
+        color: #6c757d;
+    }
+
+    .form-floating input:focus,
+    .form-floating select:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-outline-secondary {
+        color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-outline-secondary:hover {
+            color: white;
+            background-color: #6c757d;
+
+        }
+</style>

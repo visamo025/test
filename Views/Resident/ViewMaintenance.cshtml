@@ -1,0 +1,90 @@
+﻿@model IEnumerable<WebApplication3.Models.Income>
+
+@{
+    ViewData["Title"] = "ViewMaintenance";
+    Layout = "~/Views/Shared/resident.cshtml";
+}
+
+<div class="container py-5">
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-4 pb-2 align-items-center">
+                <h5 class="mb-0">Maintenance</h5>
+                <br />
+               @*  <a asp-action="Maintenance" class="btn btn-primary">Add Maintenance</a> *@
+            </div>
+            <div class="table-responsive pb-4">
+                <table id="all-student" class="table table-striped table-bordered border text-nowrap align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().Wingno)-@Html.DisplayNameFor(model => model.First().Flatno)
+                            </th>
+                            <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                            <th>@Html.DisplayNameFor(model => model.Description)</th>
+                            @* <th>
+                                @Html.DisplayNameFor(model => model.First().Wingno)-@Html.DisplayNameFor(model => model.First().Flatno)
+                            </th> *@
+                           
+                            <th>@Html.DisplayNameFor(model => model.Details)</th> 
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Wingno)-@Html.DisplayFor(modelItem => item.Flatno)
+                                </td>
+                                <td>₹ @Html.DisplayFor(modelItem => item.Amount)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                               
+                              
+                                <td>@Html.DisplayFor(modelItem => item.Details)</td>
+                                <td>
+                                    @if (item.Status == "Pending")
+                                    {
+                                        <a asp-action="PayView" asp-route-id="@item.Id" class="text-primary">Pay Now</a>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-success">PAID</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Enhance table design */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .table thead th {
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .table td,
+    .table th {
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .btn {
+        text-transform: uppercase;
+        font-size: 0.875rem;
+    }
+
+    .container h1 {
+        color: #333;
+    }
+</style>

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<WebApplication3.Models.Event>
+
+@{
+    ViewData["Title"] = "Event Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-4 pb-2 align-items-center">
+                <h5 class="mb-0">Events List</h5>               
+            </div>
+            <div class="table-responsive pb-4">
+                <table id="all-student" class="table table-striped table-bordered border text-nowrap align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Eventname)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.Reqdate)</th>
+                    <th>@Html.DisplayNameFor(model => model.Bookdate)</th>
+                    <th>@Html.DisplayNameFor(model => model.Ndays)</th>
+                    @* <th>@Html.DisplayNameFor(model => model.U)</th> *@
+                   @*  <th class="text-center">Actions</th> *@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Eventname)</td>
+                                <td> ₹@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Reqdate)</td> <!-- Now formatted properly -->
+                        <td>@Html.DisplayFor(modelItem => item.Bookdate)</td> <!-- Now formatted properly -->
+                        <td>@Html.DisplayFor(modelItem => item.Ndays)</td>
+                       @*  <td>@Html.DisplayFor(modelItem => item.U.Contactno)</td> *@
+                                @* <td>
+                                    <a asp-action="ResidentEdit" asp-route-id="@item.Uid" class="text-primary">
+                                        <i class="ti ti-pencil fs-7"></i>
+                                    </a>
+                                    <a asp-action="Details" asp-route-id="@item.Uid" class="text-success ms-2">
+                                        <i class="ti ti-eye fs-7"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.Uid" onclick="return confirm('Are you sure you want to delete this user?')" class="text-danger ms-2">
+                                        <i class="ti ti-trash fs-7"></i>
+                                    </a>
+                                </td> *@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+}
+
+<style>
+    /* Enhance table design */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .table thead th {
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .table td,
+    .table th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .btn {
+        text-transform: uppercase;
+        font-size: 0.875rem;
+    }
+
+    .container h1 {
+        color: #333;
+    }
+</style>

@@ -1,0 +1,135 @@
+﻿@model WebApplication3.Models.Gatepass
+
+@{
+    ViewData["Title"] = "Create Gatepass";
+    Layout = "~/Views/Shared/resident.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Create Gatepass</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="card-body p-4">
+                        <form asp-action="GatepassCreate" enctype="multipart/form-data" class="needs-validation" novalidate>
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="Flatno" class="form-control" placeholder="Enter Flat No" value="@ViewBag.FlatNo" readonly />
+                                        <label asp-for="Flatno">Flat No</label>
+                                        <span asp-validation-for="Flatno" class="text-danger small"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="Wingno" class="form-control" placeholder="Enter Wing No" value="@ViewBag.WingNo" readonly />
+                                        <label asp-for="Wingno">Wing No</label>
+                                        <span asp-validation-for="Wingno" class="text-danger small"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- Visitor Name -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Visitorname" class="form-control" placeholder="Enter Visitor Name" />
+                            <label asp-for="Visitorname">Visitor Name</label>
+                            <span asp-validation-for="Visitorname" class="text-danger small"></span>
+                        </div>
+                           
+
+                        <div class="form-floating mb-3">
+                             <input asp-for="Email" class="form-control" placeholder="Enter Visitor Email" />
+                             <label asp-for="Email">Visitor Email</label>
+                             <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Type -->
+                        
+                            <div class="form-floating mb-3">
+                                <select asp-for="Type" class="form-control" required>
+                                <option>----------Type--------</option>
+                                    <option>family</option>
+                                    <option>friends</option>
+                                    <option>delivery</option>
+                                   <option>others</option>
+
+                                </select>
+                           
+                            <label asp-for="Type">Type</label>
+                            <span asp-validation-for="Type" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Number of People -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Npeople" class="form-control" type="number" placeholder="Enter Number of People" />
+                            <label asp-for="Npeople">Number of People</label>
+                            <span asp-validation-for="Npeople" class="text-danger small"></span>
+                        </div>
+                       
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>                             
+                            <button type="submit" class="btn btn-primary text-white">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .form-floating label {
+        color: #6c757d;
+    }
+
+    .form-floating input:focus,
+    .form-floating select:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    .btn-outline-secondary {
+        color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-outline-secondary:hover {
+        color: white;
+        background-color: #6c757d;
+    }
+</style>

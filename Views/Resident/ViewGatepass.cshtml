@@ -1,0 +1,120 @@
+﻿@model IEnumerable<WebApplication3.Models.Gatepass>
+
+@{
+    ViewData["Title"] = "ViewGatepass";
+    Layout = "~/Views/Shared/resident.cshtml";
+}
+
+<div class="container py-5">
+
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-4 pb-2 align-items-center">
+                <h5 class="mb-0">Gatepass History</h5>
+                <br />
+                <a asp-action="GatepassCreate" class="btn btn-primary">Add Gatepass</a>
+            </div>
+            <div class="table-responsive pb-4">
+                <table id="all-student" class="table table-striped table-bordered border text-nowrap align-middle">
+                    <thead class="table-dark">                   
+        <tr>
+                           @*  <th>@Html.DisplayNameFor(model => model.Flatno)</th>
+                            <th>@Html.DisplayNameFor(model => model.Wingno)</th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Visitorname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Npeople)
+            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Date) & @Html.DisplayNameFor(model => model.Time)
+                            </th>
+
+           @*  <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th> *@
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+           
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                                <td>
+                                    (@Html.DisplayFor(modelItem => item.Wingno)-@Html.DisplayFor(modelItem => item.Flatno))&nbsp; @Html.DisplayFor(modelItem => item.Visitorname)
+                                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Npeople)
+            </td>
+                                <td>
+                                    @item.Date.ToString("dd-MM-yyyy")
+                                    @if (item.Time.ToString(@"hh\:mm\:ss") != "00:00:00")
+                                    {
+                                        <span>&nbsp; @item.Time.ToString(@"hh\:mm\:ss")</span>
+                                    }
+                                </td>
+
+            @* <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td> *@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+
+                                <td>
+                                    <a asp-action="GatepassEdit" asp-route-id="@item.Gid" class="text-primary">
+                                        <i class="ti ti-pencil fs-7"></i>
+                                    </a>
+                                    <a asp-action="qrDetails" asp-route-id="@item.Gid" class="text-success ms-2">
+                                        <i class="ti ti-eye fs-7"></i>
+                                    </a>
+                                    <a asp-action="DeleteGatepass" asp-route-id="@item.Gid" class="text-danger ms-2" onclick="return confirm('Are you sure you want to delete this gatepass?')">
+                                        <i class="ti ti-trash fs-7"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        
+        <style>
+            /* Enhance table design */
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            .table thead th {
+                text-transform: uppercase;
+                text-align: center;
+            }
+
+            .table td,
+            .table th {
+                text-align: left;
+                vertical-align: middle;
+            }
+
+            .btn {
+                text-transform: uppercase;
+                font-size: 0.875rem;
+            }
+
+            .container h1 {
+                color: #333;
+            }
+        </style>

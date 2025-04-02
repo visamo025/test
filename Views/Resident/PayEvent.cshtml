@@ -1,0 +1,122 @@
+﻿@model WebApplication3.Models.Event
+
+@{
+    ViewData["Title"] = "PayEvent";
+    Layout = "~/Views/Shared/resident.cshtml";
+}
+
+<h1>PayEvent</h1>
+
+<div>
+    <h4>Event</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Eventname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Eventname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Reqdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Reqdate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Bookdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Bookdate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ndays)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ndays)
+        </dd>
+       @*  <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.U)
+        </dt> *@
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.U.Contactno)
+        </dd>
+    </dl>
+</div>
+@* <div>
+    <a asp-action="EventEdit" asp-route-id="@Model.Eid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div> *@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <title>Razorpay .Net Sample App</title>
+    <form method="post" name="razorpayForm" action="~/Resident/PayView">
+        <input id="razorpay_payment_id" type="hidden" name="razorpay_payment_id" />
+        <input id="razorpay_order_id" type="hidden" name="razorpay_order_id" />
+        <input id="razorpay_signature" type="hidden" name="razorpay_signature" />
+
+        <button type="submit" id="rzp-button1" class="btn btn-primary text-white">Pay with Razorpay</button>
+    </form>
+</head>
+
+<body>
+    @* <button id="rzp-button1">Pay with Razorpay</button>*@
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var orderId = "@ViewBag.orderId"
+            var options = {
+                "name": "Visamo Co.op. Society",
+                "description": "Visamo: Society Management",
+                "order_id": orderId,
+                "image": "https://example.com/your_logo",
+                "prefill": {
+                    "name": "Visamo",
+                    "email": "visamo025@gmail.com",
+                    "contact": "+91 7434862635",
+                },
+                "notes": {
+                    "address": "Hello World"
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            }
+            // Boolean whether to show image inside a white frame. (default: true)
+            options.theme.image_padding = false;
+        options.handler = function (response) {
+          //  alert(response);
+                document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
+                document.getElementById('razorpay_order_id').value = orderId;
+                document.getElementById('razorpay_signature').value = response.razorpay_signature;
+                document.razorpayForm.submit();
+            };
+            options.modal = {
+                ondismiss: function () {
+                    //alert("aa");
+                    console.log("This code runs when the popup is closed");
+                },
+                // Boolean indicating whether pressing escape key
+                // should close the checkout form. (default: true)
+                escape: true,
+                // Boolean indicating whether clicking translucent blank
+                // space outside checkout form should close the form. (default: false)
+                backdropclose: false
+            };
+            var rzp = new Razorpay(options);
+        document.getElementById('rzp-button1').onclick = function (e) {
+            options.amount = $('#amount').val() * 100;
+
+            alert(JSON.stringify(options));
+                rzp.open();
+                e.preventDefault();
+            }
+    </script>
+</body>
+</html>

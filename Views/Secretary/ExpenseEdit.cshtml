@@ -1,0 +1,122 @@
+﻿@model WebApplication3.Models.Expense
+
+@{
+    ViewData["Title"] = "ExpenseEdit";
+    Layout = "~/Views/Shared/secretary.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Edit Expense</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="ExpenseEdit" class="needs-validation" novalidate>
+                        <input type="hidden" asp-for="Eid" />
+
+                        <!-- Expense Date -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Edate" type="date" class="form-control" required />
+                            <label asp-for="Edate">Expense Date</label>
+                            <span asp-validation-for="Edate" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Type -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Type" class="form-control" placeholder="Enter Expense Type" required />
+                            <label asp-for="Type">Expense Type</label>
+                            <span asp-validation-for="Type" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Payment Mode -->
+                        <div class="form-floating mb-3">
+                            <select asp-for="Paymentmode" class="form-control" required>
+                                <option value="">-- Select Payment Mode --</option>
+                                <option value="UPI">UPI</option>
+                                <option value="Credit Card">Credit Card</option>
+                                <option value="Debit Card">Debit Card</option>
+                                <option value="Others">Others</option>
+                            </select>
+                            <label asp-for="Paymentmode">Payment Mode</label>
+                            <span asp-validation-for="Paymentmode" class="text-danger small"></span>
+                        </div>
+
+
+                        <!-- Amount -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Amount" class="form-control" type="number" placeholder="Enter Amount" required />
+                            <label asp-for="Amount">Amount</label>
+                            <span asp-validation-for="Amount" class="text-danger small"></span>
+                        </div>
+
+                       @*  <!-- User ID -->
+                        <div class="form-floating mb-3">
+                            <select asp-for="Uid" class="form-control" asp-items="ViewBag.Uid"></select>
+                            <label asp-for="Uid">User ID</label>
+                            <span asp-validation-for="Uid" class="text-danger small"></span>
+                        </div> *@
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                            <button type="submit" class="btn btn-primary text-white">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    body {
+        background-color: #111c2d;
+    }
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .form-floating label {
+        color: #6c757d;
+    }
+
+    .form-floating input:focus,
+    .form-floating select:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-outline-secondary {
+        color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-outline-secondary:hover {
+            color: white;
+            background-color: #6c757d;
+        }
+</style>

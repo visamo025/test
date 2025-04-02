@@ -1,0 +1,88 @@
+﻿@model IEnumerable<WebApplication3.Models.Complain>
+
+@{
+    ViewData["Title"] = "ComplainView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-4 pb-2 align-items-center">
+                <h5 class="mb-0">Complain List</h5>                
+            </div>
+            <div class="table-responsive pb-4">
+                <table id="all-student" class="table table-striped table-bordered border text-nowrap align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.First().Details)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Personname)</th>
+                                                      <th>@Html.DisplayNameFor(model => model.First().Cdate)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Rdate)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Type)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Status)</th>
+
+                            @* <th>@Html.DisplayNameFor(model => model.First().U.Contactno)</th> *@
+                           @*  <th>Actions</th> *@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Details)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Personname)</td>
+                               
+                                <td>@Html.DisplayFor(modelItem => item.Cdate)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Rdate)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                               @*  <td>@Html.DisplayFor(modelItem => item.U.Contactno)</td> *@
+                                @* <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Cid" class="text-primary">
+                                        <i class="ti ti-pencil fs-7"></i>
+                                    </a>
+                                    <a asp-action="Details" asp-route-id="@item.Cid" class="text-success ms-2">
+                                        <i class="ti ti-eye fs-7"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.Cid" class="text-danger ms-2">
+                                        <i class="ti ti-trash fs-7"></i>
+                                    </a>
+                                </td> *@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Enhance table design */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .table thead th {
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .table td,
+    .table th {
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .btn {
+        text-transform: uppercase;
+        font-size: 0.875rem;
+    }
+
+    .container h1 {
+        color: #333;
+    }
+</style>

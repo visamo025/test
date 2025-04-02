@@ -1,0 +1,110 @@
+﻿@model WebApplication3.Models.Users
+
+@{
+    ViewData["Title"] = "SecurityCreate";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Add Security</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="SecurityCreate" class="needs-validation" enctype="multipart/form-data" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="Name" class="form-control" placeholder="Enter Name" />
+                            <label asp-for="Name">Name</label>
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="Contactno" class="form-control" placeholder="Enter Contact Number" />
+                            <label asp-for="Contactno">Contact Number</label>
+                            <span asp-validation-for="Contactno" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="email" asp-for="Email" class="form-control" placeholder="Enter Email" />
+                            <label asp-for="Email">Email</label>
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" asp-for="Password" class="form-control" placeholder="Enter password" required />
+                            <label asp-for="Password">password</label>
+                            <span asp-validation-for="Password" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Photo" class="form-label">Photo</label>
+                            <input type="file" name="file" class="form-control" />
+                            
+                        </div>
+
+                       
+
+                        <div class="d-flex justify-content-between">
+                          
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    /* Unique Styling */
+    body {
+        background-color: #111c2d;
+    }
+
+    .card {
+        border-radius: 15px;
+    }
+
+    .card-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .form-floating label {
+        color: #6c757d;
+    }
+
+    .form-floating input:focus,
+    .form-floating select:focus {
+        border-color: #343a40;
+        box-shadow: 0 0 5px rgba(52, 58, 64, 0.5);
+    }
+
+    .btn-dark {
+        background-color: #343a40;
+        border: none;
+        transition: background-color 0.3s;
+    }
+
+    .btn-dark:hover {
+        background-color: #212529;
+    }
+
+    .btn-outline-secondary {
+        transition: color 0.3s, background-color 0.3s;
+    }
+
+    .btn-outline-secondary:hover {
+        color: white;
+        background-color: #6c757d;
+    }
+</style>

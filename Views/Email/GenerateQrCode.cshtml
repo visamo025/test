@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2>QR Code Generator</h2>
+
+<form method="post">
+    <label>Enter Message:</label>
+    <input type="text" name="Message" required />
+    <button type="submit">Generate</button>
+</form>
+
+@if (ViewBag.QRCodeImage != null)
+{
+    <h3>Your QR Code:</h3>
+    <img src="@ViewBag.QRCodeImage" height="500" width="20" alt="QR Code"   />
+}

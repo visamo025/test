@@ -1,0 +1,130 @@
+﻿@model WebApplication3.Models.Income
+
+@{
+    ViewData["Title"] = "Maintenance";
+    Layout = "~/Views/Shared/secretary.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Generate Maintenance</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="card-body p-4">
+                        @if (TempData["Error"] != null)
+                        {
+                            <div class="alert alert-danger">
+                                @TempData["Error"]
+                            </div>
+                        }
+
+                        <form asp-action="Maintenance" enctype="multipart/form-data" class="needs-validation" novalidate>
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+           @*  <div class="form-group">
+                <label asp-for="Flatno" class="control-label"></label>
+                <input asp-for="Flatno" class="form-control" />
+                <span asp-validation-for="Flatno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wingno" class="control-label"></label>
+                <input asp-for="Wingno" class="form-control" />
+                <span asp-validation-for="Wingno" class="text-danger"></span>
+            </div> *@
+           @*  <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div> *@
+           @*  <div class="form-group">
+                <label asp-for="Uid" class="control-label"></label>
+                <select asp-for="Uid" class ="form-control" asp-items="ViewBag.Uid"></select>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="Details" class="control-label"></label>
+                <input asp-for="Details" class="form-control" />
+                <span asp-validation-for="Details" class="text-danger"></span>
+            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Generate Maintenance for All Residents" class="btn btn-primary" />
+                            </div>
+
+                            <!-- Informative message to user -->
+                            <p class="text-success mt-3">
+                                The maintenance for all residents will be generated when you click the button above.
+                            </p>
+        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .form-floating label {
+        color: #6c757d;
+    }
+
+    .form-floating input:focus,
+    .form-floating select:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    .btn-outline-secondary {
+        color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-outline-secondary:hover {
+        color: white;
+        background-color: #6c757d;
+    }
+</style>
+

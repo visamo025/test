@@ -1,0 +1,70 @@
+﻿@model WebApplication3.Models.Service
+
+@{
+    ViewData["Title"] = "ServiceEdit";
+    Layout = "~/Views/Shared/resident.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>Edit Service</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="ServiceEdit" enctype="multipart/form-data" class="needs-validation">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="Sid" />
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Typeofservice" class="control-label"></label>
+                <input asp-for="Typeofservice" class="form-control" />
+                <span asp-validation-for="Typeofservice" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="Requestdatetime" class="control-label"></label>
+                <input asp-for="Requestdatetime" class="form-control" />
+                <span asp-validation-for="Requestdatetime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Completedatetime" class="control-label"></label>
+                <input asp-for="Completedatetime" class="form-control" />
+                <span asp-validation-for="Completedatetime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nameofworker" class="control-label"></label>
+                <input asp-for="Nameofworker" class="form-control" />
+                <span asp-validation-for="Nameofworker" class="text-danger"></span>
+            </div> *@
+            @* <div class="form-group">
+                <label asp-for="Uid" class="control-label"></label>
+                <select asp-for="Uid" class="form-control" asp-items="ViewBag.Uid"></select>
+                <span asp-validation-for="Uid" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="Flatno" class="control-label"></label>
+                <input asp-for="Flatno" class="form-control" />
+                <span asp-validation-for="Flatno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wingno" class="control-label"></label>
+                <input asp-for="Wingno" class="form-control" />
+                <span asp-validation-for="Wingno" class="text-danger"></span>
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                            </div>
+            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 

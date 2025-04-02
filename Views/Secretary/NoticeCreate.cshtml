@@ -1,0 +1,99 @@
+﻿@model WebApplication3.Models.Notice
+
+@{
+    ViewData["Title"] = "NoticeCreate";
+    Layout = "~/Views/Shared/secretary.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Add Notice</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="NoticeCreate" class="needs-validation" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="form-floating mb-3">
+                            <textarea asp-for="Details" class="form-control" placeholder="Enter Notice Details" style="height: 100px;"></textarea>
+                            <label asp-for="Details">Notice Detail</label>
+                            <span asp-validation-for="Details" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="date" asp-for="Ndate" class="form-control" placeholder="Enter Notice Date" />
+                            <label asp-for="Ndate">Notice Date</label>
+                            <span asp-validation-for="Ndate" class="text-danger small"></span>
+                        </div>
+
+                      
+                        <div class="form-floating mb-3">
+                            <input asp-for="Type" class="form-control" placeholder="Enter Notice Type" />
+                            <label asp-for="Type">Type of Notice</label>
+                            <span asp-validation-for="Type" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    /* Unique Styling */
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border-radius: 10px;
+    }
+
+    .card-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .form-floating label {
+        color: #6c757d;
+    }
+
+    .form-floating input:focus,
+    .form-floating textarea:focus,
+    .form-select:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+    }
+
+    .btn-primary {
+        background-color: #0d6efd;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0a58ca;
+    }
+
+    .btn-outline-secondary {
+        transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .btn-outline-secondary:hover {
+        color: white;
+        background-color: #6c757d;
+    }
+</style>

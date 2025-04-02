@@ -1,0 +1,133 @@
+﻿@model WebApplication3.Models.Users
+
+@{
+    ViewData["Title"] = "ResidentCreate";
+    Layout = "_Layout";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>Add Resident</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="ResidentCreate" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Flatno" class="form-control" placeholder="Enter Flat No" required/>
+                                    <label asp-for="Flatno">Flat No</label>
+                                    <span asp-validation-for="Flatno" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <select asp-for="Wingno" class="form-control" required>
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                        <option>D</option>
+                                    </select>
+                                    <label asp-for="Wingno">Wing No</label>
+                                    <span asp-validation-for="Wingno" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="Name" class="form-control" placeholder="Enter Name" required />
+                            <label asp-for="Name">Name</label>
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="Contactno" class="form-control" placeholder="Enter Contact No" required />
+                            <label asp-for="Contactno">Contact No</label>
+                            <span asp-validation-for="Contactno" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="email" asp-for="Email" class="form-control" placeholder="Enter Email" required />
+                            <label asp-for="Email">Email</label>
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" asp-for="Password" class="form-control" placeholder="Enter password" required />
+                            <label asp-for="Password">password</label>
+                            <span asp-validation-for="Password" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Photo" class="form-label">Photo</label>
+                            <input type="file" name="file" class="form-control" required />
+                            <span  class="text-danger small"></span>
+                        </div>
+                       
+                   
+                        <div class="d-flex justify-content-between">
+                           
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    /* Custom Styles */
+    body {
+        background-color: #111c2d;
+    }
+
+    .card {
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        border-bottom: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .form-floating label {
+        color: #6c757d;
+    }
+
+    .form-floating input:focus,
+    .form-floating select:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        transition: background-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-outline-secondary {
+        transition: color 0.3s, background-color 0.3s;
+    }
+
+        .btn-outline-secondary:hover {
+            color: white;
+            background-color: #6c757d;
+        }
+</style>

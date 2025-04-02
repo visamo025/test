@@ -1,0 +1,98 @@
+﻿@model WebApplication3.Models.Complain
+
+@{
+    ViewData["Title"] = "Complain";
+    Layout = "~/Views/Shared/resident.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Request a Complaint</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Complain">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="form-group">
+                            <label asp-for="Details" class="form-label">Problem Details</label>
+                            <textarea asp-for="Details" class="form-control" rows="3" placeholder="Describe your complaint..."></textarea>
+                            <span asp-validation-for="Details" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Personname" class="form-label">Your Name</label>
+                            <input asp-for="Personname" class="form-control" placeholder="Enter your name" value="@TempData["user"]" readonly />
+                            <span asp-validation-for="Personname" class="text-danger"></span>
+                        </div>
+                                              
+                        <div class="form-group">
+                            <label asp-for="Type" class="form-label">Complaint Type</label>
+                            <input asp-for="Type" class="form-control" placeholder="Enter Type of the complaint"/>
+                            <span asp-validation-for="Type" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                            <button type="submit" class="btn btn-primary text-white">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .form-floating label {
+        color: #6c757d;
+    }
+
+    .form-floating input:focus,
+    .form-floating select:focus {
+        border-color: #17a2b8;
+        box-shadow: 0 0 5px rgba(23, 162, 184, 0.5);
+    }
+
+    .btn-info {
+        background-color: rgb(0, 133, 219);
+        border: none;
+    }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+    .btn-outline-secondary {
+        color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-outline-secondary:hover {
+            color: white;
+            background-color: #6c757d;
+        }
+</style>
+

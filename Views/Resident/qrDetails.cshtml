@@ -1,0 +1,74 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model WebApplication3.Models.Gatepass
+
+@{
+    ViewData["Title"] = "qrDetails";
+    Layout = "~/Views/Shared/resident.cshtml";
+}
+
+<h1>Visitor Details</h1>
+
+<div>
+    <h4>Generated Gatepass Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Visitorname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visitorname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Npeople)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Npeople)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+       @*  <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Time)
+        </dd>  *@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Flatno)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Flatno)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Wingno)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wingno)
+        </dd>
+
+
+        <dt>
+            <img src="@ViewBag.QRCodeImage" height="200" width="200" alt="QR Code" />
+
+        </dt>
+    </dl>
+</div>

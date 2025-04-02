@@ -1,0 +1,119 @@
+﻿@model WebApplication3.Models.Service
+
+@{
+    ViewData["Title"] = "Service";
+    Layout = "~/Views/Shared/resident.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>Create Service</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Service" class="needs-validation" novalidate>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Flatno" class="form-control" placeholder="Enter Flat No" value="@TempData["flatno"]" readonly />
+                                    <label asp-for="Flatno">Flat No</label>
+                                    <span asp-validation-for="Flatno" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Wingno" class="form-control" placeholder="Enter Wing No" value="@TempData["wingno"]" readonly />
+                                    <label asp-for="Wingno">Wing No</label>
+                                    <span asp-validation-for="Wingno" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        @* <div class="mb-3">
+                            <label asp-for="Nameofworker" class="form-label">Name of Worker</label>
+                            <input asp-for="Nameofworker" class="form-control" placeholder="Enter Worker Name" required />
+                            <span asp-validation-for="Nameofworker" class="text-danger"></span>
+                        </div> *@
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Description</label>
+                            <input asp-for="Description" class="form-control" placeholder="Enter Service Description" required />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <!-- Type of Service -->
+                        <div class="mb-3">
+                            <label asp-for="Typeofservice" class="form-label">Type of Service</label>
+                            <input asp-for="Typeofservice" class="form-control" placeholder="Enter Service Type" required />
+                            <span asp-validation-for="Typeofservice" class="text-danger"></span>
+                        </div>
+
+                        <!-- Request Date and Time -->
+                        <!-- Completion Date and Time -->
+                        <!-- Completion Date (Disabled) -->
+                        @* <div class="mb-3">
+                            <label asp-for="Completedatetime" class="form-label">Completion Date & Time</label>
+                            <input asp-for="Completedatetime" class="form-control" type="datetime-local" />
+                            <span asp-validation-for="Completedatetime" class="text-danger"></span>
+                        </div> *@
+
+                        <!-- Submit Button -->
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        background-color: rgb(21 38 58);
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .card {
+        border-radius: 12px;
+    }
+
+    .card-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-outline-secondary {
+        transition: all 0.3s ease;
+    }
+
+        .btn-outline-secondary:hover {
+            color: white;
+            background-color: #6c757d;
+        }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    }
+
+    .text-danger {
+        font-size: 0.9rem;
+
+    }
+</style>

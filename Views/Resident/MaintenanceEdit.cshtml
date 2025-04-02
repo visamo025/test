@@ -1,0 +1,118 @@
+﻿@model WebApplication3.Models.Income
+
+@{
+    ViewData["Title"] = "MaintenanceEdit";
+    Layout = "~/Views/Shared/resident.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Edit Maintenance</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="MaintenanceEdit">
+                        <div asp-validation-summary="ModelOnly"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Flatno" class="control-label"></label>
+                <input asp-for="Flatno" class="form-control" />
+                <span asp-validation-for="Flatno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wingno" class="control-label"></label>
+                <input asp-for="Wingno" class="form-control" />
+                <span asp-validation-for="Wingno" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Uid" class="control-label"></label>
+                <select asp-for="Uid" class="form-control" asp-items="ViewBag.Uid"></select>
+                <span asp-validation-for="Uid" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="Details" class="control-label"></label>
+                <input asp-for="Details" class="form-control" />
+                <span asp-validation-for="Details" class="text-danger"></span>
+            </div>
+                        <div class="d-flex justify-content-between">
+
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .form-floating label {
+        color: #6c757d;
+    }
+
+    .form-floating input:focus,
+    .form-floating select:focus {
+        border-color: #17a2b8;
+        box-shadow: 0 0 5px rgba(23, 162, 184, 0.5);
+    }
+
+    .btn-info {
+        background-color: rgb(0, 133, 219);
+        border: none;
+    }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+    .btn-outline-secondary {
+        color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-outline-secondary:hover {
+            color: white;
+            background-color: #6c757d;
+        }
+</style>

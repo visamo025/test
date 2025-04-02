@@ -1,0 +1,102 @@
+﻿@model WebApplication3.Models.Event
+
+@{
+    ViewData["Title"] = "EventEdit";
+    Layout = "~/Views/Shared/resident.cshtml";
+}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Edit Event</h3>
+                </div>
+                <div class="card-body">
+        <form asp-action="EventEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Eid" />
+            <div class="form-group">
+                <label asp-for="Eventname" class="control-label"></label>
+                <input asp-for="Eventname" class="form-control" />
+                <span asp-validation-for="Eventname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="Reqdate" class="control-label"></label>
+                <input asp-for="Reqdate" class="form-control" />
+                <span asp-validation-for="Reqdate" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="Bookdate" class="control-label"></label>
+                <input asp-for="Bookdate" class="form-control" />
+                <span asp-validation-for="Bookdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ndays" class="control-label"></label>
+                <input asp-for="Ndays" class="form-control" />
+                <span asp-validation-for="Ndays" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="Uid" class="control-label"></label>
+                <select asp-for="Uid" class="form-control" asp-items="ViewBag.Uid"></select>
+                <span asp-validation-for="Uid" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .form-floating label {
+        color: #6c757d;
+    }
+
+    .form-floating input:focus,
+    .form-floating select:focus {
+        border-color: #17a2b8;
+        box-shadow: 0 0 5px rgba(23, 162, 184, 0.5);
+    }
+
+    .btn-info {
+        background-color: rgb(0, 133, 219);
+        border: none;
+    }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+    .btn-outline-secondary {
+        color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-outline-secondary:hover {
+            color: white;
+            background-color: #6c757d;
+        }
+</style>

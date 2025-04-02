@@ -1,0 +1,121 @@
+﻿@model WebApplication3.Models.Event
+
+@{
+    ViewData["Title"] = "Add Event";
+    Layout = "~/Views/Shared/resident.cshtml";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Add New Event</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Eventname" class="needs-validation" novalidate>
+                       
+
+                        <!-- Event Name -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Eventname" class="form-control" placeholder="Enter Event Name" />
+                            <label asp-for="Eventname">Event Name</label>
+                            <span asp-validation-for="Bookdate" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Amount -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Amount" class="form-control" placeholder="Enter Amount" value="6000" />
+                            <label asp-for="Amount">Amount</label>
+                            <span asp-validation-for="Amount" class="text-danger small"></span>
+                        </div>
+
+                       @*  <!-- Request Date -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Reqdate" class="form-control" type="date" placeholder="Select Request Date" />
+                            <label asp-for="Reqdate">Request Date</label>
+                            <span asp-validation-for="Reqdate" class="text-danger small"></span>
+                        </div> *@
+
+                        <!-- Booking Date -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Bookdate" class="form-control" type="date" placeholder="Select Booking Date" />
+                            <label asp-for="Bookdate">Booking Date</label>
+                            <span asp-validation-for="Bookdate" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Number of Days -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Ndays" class="form-control" type="number" placeholder="Enter Number of Days" />
+                            <label asp-for="Ndays">Number of Days</label>
+                            <span asp-validation-for="Ndays" class="text-danger small"></span>
+                        </div>
+
+                        <!-- User ID -->
+                       
+                        <!-- Action Buttons -->
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                            <button type="submit" class="btn btn-primary text-white">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .form-floating label {
+        color: #6c757d;
+    }
+
+    .form-floating input:focus,
+    .form-floating select:focus {
+        border-color: #17a2b8;
+        box-shadow: 0 0 5px rgba(23, 162, 184, 0.5);
+    }
+
+    .btn-info {
+        background-color: rgb(0, 133, 219);
+        border: none;
+    }
+
+    .btn-info:hover {
+        background-color: #138496;
+    }
+
+    .btn-outline-secondary {
+        color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-outline-secondary:hover {
+        color: white;
+        background-color: #6c757d;
+    }
+</style>
