@@ -1,0 +1,1 @@
+﻿alter table users Add Password varchar(50); 
